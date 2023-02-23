@@ -10,10 +10,6 @@ const request = require("request");
 //Creating an instance of express
 const app = express();
 
-//Creating an instance of mailchimp 
-const client = require("@mailchimp/mailchimp_marketing");
-const { response } = require("express");
-
 //To create a static folder for CSS
 app.use(express.static(__dirname+"/public"));
 
@@ -21,7 +17,7 @@ app.use(express.static(__dirname+"/public"));
 app.use(express.urlencoded());
 
 //Setting the API key and server - server is the last part of the API key after the hypen
-client.setConfig({apiKey: "710155d0084cc9dc387d71dacc0a364e",  server: "us11",});
+client.setConfig({apiKey: "YOURAPIKEY",  server: "us11",});
 
 //Setting the index.html on the main directory
 app.get("/",(req,res)=>{
@@ -63,7 +59,7 @@ app.post("/",(req,res)=>{
 
     const options = {
         method : "POST",
-        auth:"angela1:710155d0084cc9dc387d71dacc0a364e-us11" 
+        auth:"angela1:YourAPIKEY" 
     }
 
     //Request to send data to the MailChimp API 
@@ -88,7 +84,3 @@ app.post("/",(req,res)=>{
 app.post("/failure",(req,res)=>{
     res.redirect("/");
 })
-
-//API KEY (MailChimp Key) - 710155d0084cc9dc387d71dacc0a364e-us11 
-
-//Audience or List ID - 52df8b9342
